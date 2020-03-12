@@ -21,6 +21,7 @@ const TodoList = props => {
           )
         )
       )}
+      <button onClick={props.clearCompleted}>Clear Completed Tasks</button>
     </div>
   );
 };

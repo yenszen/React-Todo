@@ -6,17 +6,17 @@ import "./components/Todo.css";
 const data = [
   {
     task: "Learn setState()",
-    id: Math.floor(Math.random() * 20) + 1,
+    id: Math.floor(Math.random() * 10000) + 1,
     completed: false
   },
   {
     task: "Style my todo list",
-    id: Math.floor(Math.random() * 20) + 1,
+    id: Math.floor(Math.random() * 10000) + 1,
     completed: false
   },
   {
     task: "Learn react",
-    id: Math.floor(Math.random() * 20) + 1,
+    id: Math.floor(Math.random() * 10000) + 1,
     completed: false
   }
 ];
@@ -53,21 +53,31 @@ class App extends React.Component {
         ...this.state.todos,
         {
           task: taskName,
-          id: Math.floor(Math.random() * 20) + 1,
+          id: Math.floor(Math.random() * 10000) + 1,
           completed: false
         }
       ]
     });
   };
 
+  clearCompleted = () => {
+    console.log("ys: App.js: clearCompleted");
+    this.setState({
+      todos: this.state.todos.filter(item => {
+        return !item.completed;
+      })
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm />
+        <TodoForm addTask={this.addTask} />
         <TodoList
           todos={this.state.todos}
           toggleCompleted={this.toggleCompleted}
+          clearCompleted={this.clearCompleted}
         />
       </div>
     );
