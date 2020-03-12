@@ -17,6 +17,10 @@ class TodoForm extends React.Component {
   handleAddTask = event => {
     event.preventDefault();
     this.props.addTask(this.state.taskName);
+    // clears input field after submission
+    this.setState({
+      taskName: ""
+    })
   }
 
   render() {
