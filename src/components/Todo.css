@@ -1,0 +1,16 @@
+.App {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.todo {
+  background: green;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.todo.completed {
+  background: lightgreen;
+  text-decoration: line-through;
+}

@@ -1,6 +1,7 @@
-import React from 'react';
+import React from "react";
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
+import "./components/Todo.css";
 
 const data = [
   {
@@ -18,7 +19,7 @@ const data = [
     id: Math.floor(Math.random() * 20) + 1,
     completed: false
   }
-]
+];
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -28,19 +29,46 @@ class App extends React.Component {
     super();
     this.state = {
       todos: data
-    }
+    };
   }
 
   toggleCompleted = itemId => {
     console.log("ys: App.js: toggleCompleted: itemId: ", itemId);
-  }
+    this.setState({
+      todos: this.state.todos.map(item => {
+        if (item.id === itemId) {
+          return {
+            ...item,
+            completed: !item.completed
+          };
+        }
+        return item;
+      })
+    });
+  };
+
+  addTask = taskName => {
+    this.setState({
+      todos: [
+        ...this.state.todos,
+        {
+          task: taskName,
+          id: Math.floor(Math.random() * 20) + 1,
+          completed: false
+        }
+      ]
+    });
+  };
 
   render() {
     return (
       <div className="App">
         <h2>Welcome to your Todo App!</h2>
         <TodoForm />
-        <TodoList todo={this.state.todos} toggleCompleted={this.toggleCompleted} />
+        <TodoList
+          todos={this.state.todos}
+          toggleCompleted={this.toggleCompleted}
+        />
       </div>
     );
   }
