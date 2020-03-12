@@ -1,0 +1,18 @@
+.App {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.todo {
+  background: lightseagreen;
+  width: 50%;
+  height: 2rem;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.todo.completed {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
